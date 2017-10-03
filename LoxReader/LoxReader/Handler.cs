@@ -3,7 +3,6 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using MM.MPT.Common;
-using MM.MPT.Common.Language;
 
 namespace LoxReader
 {

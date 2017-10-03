@@ -34,7 +34,7 @@ namespace LoxReader
 
             LoxInfo.FileName = args.Length > 0
                 ? args[0]
-                : @"C:\LoxReader\Logs\FFService 2017-05-21.lox";
+                : @"C:\repo\LoxReader\LoxReader\Logs\FFService 2017-05-21.lox";
         }
 
         private void UpdateTextbox(object sender, HandlerEventArgs e)
