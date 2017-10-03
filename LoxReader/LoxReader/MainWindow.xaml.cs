@@ -52,7 +52,7 @@ namespace LoxReader
                 ? txtBox.Text.IndexOf(e.SearchString, StringComparison.CurrentCultureIgnoreCase) 
                 : txtBox.Text.Length;
             txtBox.SelectionStart = txtBox.CaretIndex;
-            txtBox.SelectionLength = e.SearchString.Length;           
+            txtBox.SelectionLength = e.SearchString.Length;        
         }
 
 
