@@ -78,7 +78,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Handler.cs" />
-    <Compile Include="Model\LoxInfo.cs" />
     <Compile Include="FindAndReplaceWindow.xaml.cs">
       <DependentUpon>FindAndReplaceWindow.xaml</DependentUpon>
     </Compile>

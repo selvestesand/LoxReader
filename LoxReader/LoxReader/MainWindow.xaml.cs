@@ -3,13 +3,11 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using MM.MPT.Common.Enum;
 using System.Windows.Threading;
-using System.Threading.Tasks;
 using Microsoft.Win32;
 
 namespace LoxReader
-{    
+{
 
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
@@ -22,17 +20,15 @@ namespace LoxReader
         public FindWindow FindWindow;
         
         public Handler Handler;
-        public LoxInfo LoxInfo;
 
         public MainWindow(string[] args)
         {
             InitializeComponent();
-
-            LoxInfo = new LoxInfo();
-            Handler = new Handler(LoxInfo);
+            
+            Handler = new Handler();
             Handler.NewFileRead += UpdateTextbox;            
 
-            LoxInfo.FileName = args.Length > 0
+            Handler.FilePath = args.Length > 0
                 ? args[0]
                 : @"C:\repo\LoxReader\LoxReader\Logs\FFService 2017-05-21.lox";
         }
@@ -47,51 +43,55 @@ namespace LoxReader
 
         private void SearchTextBox(object sender, FindWindow.FindWindowEventArgs e)
         {
+            this.Focus();
+            int searchIndex = txtBox.Text.Length > txtBox.CaretIndex ? txtBox.CaretIndex + 1  : txtBox.CaretIndex ;
             txtBox.CaretIndex = 
-                txtBox.Text.IndexOf(e.SearchString, StringComparison.CurrentCultureIgnoreCase) > 0 
-                ? txtBox.Text.IndexOf(e.SearchString, StringComparison.CurrentCultureIgnoreCase) 
+                txtBox.Text.IndexOf(e.SearchString, searchIndex, StringComparison.CurrentCultureIgnoreCase) > 0 
+                ? txtBox.Text.IndexOf(e.SearchString, searchIndex, StringComparison.CurrentCultureIgnoreCase) 
                 : txtBox.Text.Length;
             txtBox.SelectionStart = txtBox.CaretIndex;
-            txtBox.SelectionLength = e.SearchString.Length;        
+            txtBox.SelectionLength = e.SearchString.Length;
         }
 
 
-        private async void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
            
             try
             {
                 var menuItem = e.OriginalSource as MenuItem;
-
-                switch (menuItem.Name)
-                {
-                    case "Open":
-                        OpenFileDialog openFileDialog = new OpenFileDialog();
-                        openFileDialog.Multiselect = false;
-                        openFileDialog.Filter = "Lox files (*.lox)|*.lox|All files (*.*)|*.*";
-                        openFileDialog.InitialDirectory =
-                            Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
-                        LoxInfo.FileName = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : LoxInfo.FileName;
-                        break;
-                    case "Close":
-                        Application.Current.Shutdown();
-                        break;
-                    case "Find":
-                        if (FindWindow == null)
-                            FindWindow = new FindWindow();
-                        FindWindow.Search += SearchTextBox;
-                        FindWindow.Show();
-                        break;
-                    case "Replace":
-                        FindAndReplaceWindow = new FindAndReplaceWindow();
-                        break;                    
-                    case "About":
-                        MessageBox.Show(
-                            "LoxReader " + Assembly.GetExecutingAssembly().GetName().Version + " was published on: " +
-                            DateTime.Now.ToString("yyyy-MM-dd"), "About");
-                        break;
-                    default:
-                        break;
+                if(menuItem.Name != null) { 
+                    switch (menuItem.Name)
+                    {
+                        case "Open":
+                            OpenFileDialog openFileDialog = new OpenFileDialog();
+                            openFileDialog.Multiselect = false;
+                            openFileDialog.Filter = "Lox files (*.lox)|*.lox|All files (*.*)|*.*";
+                            openFileDialog.InitialDirectory =
+                                Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
+                            Handler.FilePath = openFileDialog.ShowDialog() == true ? openFileDialog.FileName : Handler.FilePath;
+                            break;
+                        case "Close":
+                            Application.Current.Shutdown();
+                            break;
+                        case "Find":
+                            if (FindWindow == null)
+                                FindWindow = new FindWindow();
+                            FindWindow.Owner = this;
+                            FindWindow.Search += SearchTextBox;                                                     
+                            FindWindow.Show();
+                            break;
+                        case "Replace":
+                            FindAndReplaceWindow = new FindAndReplaceWindow();
+                            break;                    
+                        case "About":
+                            MessageBox.Show(
+                                "LoxReader " + Assembly.GetExecutingAssembly().GetName().Version + " was published on: " +
+                                DateTime.Now.ToString("yyyy-MM-dd"), "About");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (NullReferenceException exception)
@@ -102,5 +102,6 @@ namespace LoxReader
             }
             
         }
+
     }
 }

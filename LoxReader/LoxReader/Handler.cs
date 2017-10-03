@@ -8,7 +8,7 @@ namespace LoxReader
 {
     public class Handler
     {        
-        private LoxInfo LoxInfo;
+        //private LoxInfo LoxInfo;
         // Regex pattern used to check log threshold
         public string DecryptedContent { get; set; }
         private const string RegexPattern =
@@ -16,24 +16,33 @@ namespace LoxReader
 
         public event EventHandler<HandlerEventArgs> NewFileRead;
 
-        public Handler(LoxInfo loxInfo)
+        private string _filePath;
+        public string FilePath
+        {
+            get { return _filePath; }
+
+            set
+            {
+                if (_filePath != value)
+                {
+                    _filePath = value;
+                    OpenFile();
+                }
+            }
+        }
+        
+        public Handler()
         {
             DecryptedContent = string.Empty;
-            LoxInfo = loxInfo;
-            LoxInfo.NewFile += OpenFile;
+            _filePath = string.Empty;
         }
 
-        public bool IsValid()
+        private void OpenFile()
         {
-            return true;
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            if (File.Exists(LoxInfo.FileName))
+            if (File.Exists(FilePath))
             {
                 var str = new StringBuilder();
-                var reader = new StreamReader(LoxInfo.FileName);
+                var reader = new StreamReader(FilePath);
                 string line;
 
                 while ((line = reader.ReadLine()) != null)
@@ -62,7 +71,7 @@ namespace LoxReader
         }
 
         /// <summary>
-        ///     Returns either "INFO", "DEBUG" or "ERROR"
+        /// Returns either "INFO", "DEBUG" or "ERROR"
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
@@ -71,9 +80,7 @@ namespace LoxReader
             var regex = new Regex(RegexPattern);
             var match = regex.Match(line);
 
-            if (match.Success)
-                return match.Groups[4].Value;
-            return "INFO";
+            return match.Success ? match.Groups[4].Value : "INFO";            
         }
     }
 
