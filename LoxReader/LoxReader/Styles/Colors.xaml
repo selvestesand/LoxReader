@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LoxReader">
+
+    <Color x:Key="MelinDarkPurple">#b4286e</Color>
+    <SolidColorBrush x:Key="MelinDarkPurpleBrush" Color="{StaticResource MelinDarkPurple}"/>
+    
+    <Color x:Key="MelinDarkGrey">#595a5c</Color>
+    <SolidColorBrush x:Key="MelinDarkGreyBrush" Color="{StaticResource MelinDarkGrey}"/>
+
+    <!--  
+    <Color x:Key="MelinLightGrey">#6b6c6e</Color>
+    -->
+    <Color x:Key="MelinLightGrey">#fefefe</Color>
+    <SolidColorBrush x:Key="MelinLightGreyBrush" Color="{StaticResource MelinLightGrey}"/>
+    
+    <Color x:Key="MelinVeryLight">#ffffff</Color>
+    <SolidColorBrush x:Key="MelinVeryLightBrush" Color="{StaticResource MelinVeryLight}"/>
+
+    <Color x:Key="MelinVeryDark">#000000</Color>
+    <SolidColorBrush x:Key="MelinVeryDarkBrush" Color="{StaticResource MelinVeryDark}"/>
+
+</ResourceDictionary>
