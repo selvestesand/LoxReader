@@ -1,8 +1,0 @@
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\bin\Debug\ViewModel.dll
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\bin\Debug\ViewModel.pdb
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\bin\Debug\FileHandler.dll
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\bin\Debug\Common.dll
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\bin\Debug\FileHandler.pdb
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\obj\Debug\ViewModel.dll
-C:\Users\Aleksander\Documents\Bitbucket\repo\LoxReader\ViewModel\obj\Debug\ViewModel.pdb

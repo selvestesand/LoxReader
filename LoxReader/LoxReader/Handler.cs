@@ -6,76 +6,59 @@ using MM.MPT.Common;
 
 namespace LoxReader
 {
-    public class Handler
-    {        
+    public static class Handler
+    {
+        #region Properties    
         //private LoxInfo LoxInfo;
         // Regex pattern used to check log threshold
-        public string DecryptedContent { get; set; }
+        //public string DecryptedContent { get; set; }
         private const string RegexPattern =
             @"((\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d{3}) (\[.*\]) (INFO|DEBUG|ERROR) (.*))";
+     
 
-        public event EventHandler<HandlerEventArgs> NewFileRead;
+        #endregion
 
-        private string _filePath;
-        public string FilePath
+        #region Methods
+        public static string DecryptFile(string filePath)
         {
-            get { return _filePath; }
+            if (!File.Exists(filePath))
+                return "";
+            
+            var str = new StringBuilder();
+            var reader = new StreamReader(filePath);
+            string line;
 
-            set
-            {
-                if (_filePath != value)
+            while ((line = reader.ReadLine()) != null)
+                switch (CheckLogThreshold(line = Crypto.DecryptString(line)))
                 {
-                    _filePath = value;
-                    OpenFile();
+                    case "ERROR":
+                    case "DEBUG":
+                    case "INFO":
+                    default:
+                        str.AppendLine(line);
+                        break;
                 }
-            }
-        }
-        
-        public Handler()
-        {
-            DecryptedContent = string.Empty;
-            _filePath = string.Empty;
-        }
-
-        private void OpenFile()
-        {
-            if (File.Exists(FilePath))
-            {
-                var str = new StringBuilder();
-                var reader = new StreamReader(FilePath);
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
-                    switch (CheckLogThreshold(line = Crypto.DecryptString(line)))
-                    {
-                        case "ERROR":
-                        case "DEBUG":
-                        case "INFO":
-                        default:
-                            str.AppendLine(line);
-                            break;
-                    }
               
-                reader.Close();
+            reader.Close();
 
-                // Fires event to update MainWindow
-                OnNewFileRead(str.ToString());
-            }
-
+            return str.ToString();
+            
+            // Fires event to update MainWindow
+            //OnNewFileRead(str.ToString());
 
         }
 
-        private void OnNewFileRead(string decryptedContent)
-        {
-            NewFileRead?.Invoke(this, new HandlerEventArgs() {DecryptedContent = decryptedContent});
-        }
+        //private void OnNewFileRead(string decryptedContent)
+        //{
+          //  NewFileRead?.Invoke(this, new HandlerEventArgs() {DecryptedContent = decryptedContent});
+        //}
 
         /// <summary>
         /// Returns either "INFO", "DEBUG" or "ERROR"
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
-        private string CheckLogThreshold(string line)
+        private static string CheckLogThreshold(string line)
         {
             var regex = new Regex(RegexPattern);
             var match = regex.Match(line);
@@ -84,8 +67,14 @@ namespace LoxReader
         }
     }
 
+    #endregion
+
+    #region HandlerEventArgs
+
     public class HandlerEventArgs : EventArgs
     {
         public string DecryptedContent { get; set; }    
     }
+
+    #endregion
 }

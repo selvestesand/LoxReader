@@ -13,12 +13,5 @@ namespace LoxReader
     /// </summary>
     public partial class App : Application
     {
-        MainWindow mainWindow;
-        public void Application_Startup(object sender, StartupEventArgs e)
-        {
-            mainWindow = new LoxReader.MainWindow(e.Args);
-            mainWindow.Show();
-        }
-
     }
 }

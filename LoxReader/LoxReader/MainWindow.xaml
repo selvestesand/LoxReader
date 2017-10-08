@@ -3,46 +3,145 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LoxReader"       
+        xmlns:local="clr-namespace:LoxReader"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        x:Name="AppWindow"
+        Icon="Images/Decrypted.png"
         mc:Ignorable="d"
-        Title="LoxReader" Icon="LoxReaderIcon.ico">
+        MinWidth="{Binding WindowMinimumWidth, FallbackValue=400}"
+        MinHeight="{Binding WindowMinimumHeight, FallbackValue=400}"         
+        Height="{Binding WindowHeight}" 
+        Width="{Binding WindowWidth}"
+        Title="Loxreader">
     <Window.Resources>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <!-- Outer border with the dropshadow margin -->
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                            <!-- Main window outline -->
+                            <Grid>
+
+                                <!-- Opacity mask for corners on grid -->
+                                <Border x:Name="Container"
+                                        Background="{StaticResource MelinVeryLightBrush}"
+                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=2}"/>
+
+                                <!-- Window border and dropshadow -->
+                                <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=2}" 
+                                        Background="{StaticResource MelinVeryLightBrush}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="6" Opacity="0.15"></DropShadowEffect>
+                                    </Border.Effect>
+                                </Border>
+                                
+                                <!--  Main Window Content  -->
+                                <Grid>
+
+                                    <!-- Corner clipping  -->
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Container}"/>
+                                    </Grid.OpacityMask>
+
+                                    <Grid.RowDefinitions>
+
+                                        <!-- Title Bar -->
+                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}"></RowDefinition>
+                                        <!-- Drop Shadow -->
+                                        <RowDefinition Height="Auto"/>
+                                        <!-- Window Content -->
+                                        <RowDefinition Height="*"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Title Bar -->
+                                    <Grid Grid.Column="0" Panel.ZIndex="1" Background="{StaticResource MelinVeryLightBrush}">
+                                        
+                                        <Grid.ColumnDefinitions>
+                                            <!-- Icon -->
+                                            <ColumnDefinition Width="Auto"/>
+                                            <!-- Title -->
+                                            <ColumnDefinition Width="*"/>
+                                            <!-- Windows Button -->
+                                            <ColumnDefinition Width="Auto"/>
+                                        
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Icon -->
+                                        <Button Style="{StaticResource SystemIconButton}"                                                 
+                                                Command="{Binding MenuCommand}">
+                                            <Image Source="/Images/Decrypted.png"/>
+                                        </Button>
+
+                                        <!-- Title text -->
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Loxreader'}"/>
+                                        </Viewbox>
+
+                                        <!-- Window Buttons -->                                        
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizeCommand}" Content="_"/>
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizeCommand}" Content="[ ]"/>
+                                            <Button Style="{StaticResource WindowCloseButton}" Command="{Binding CloseCommand}" Content="X"/>
+                                            
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                    <!-- Drop shadow -->                                    
+                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
+                                        
+                                        <!-- Underline of the header -->
+                                        <Border.BorderBrush>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="0.0"/>
+                                                <GradientStop Color="{StaticResource MelinDarkGrey}" Offset="0.5"/>
+                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.BorderBrush>
+
+                                        <!-- Drop shadow -->
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="0.0"/>
+                                                <GradientStop Color="{StaticResource MelinVeryLight}" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+
+                                    <Border Grid.Row="2" Padding="{Binding InnerContentPaddingThickness}">
+                                        <ContentPresenter Content="{TemplateBinding Content}" />
+                                    </Border>
+
+                                </Grid>
+                                
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            CaptionHeight="{Binding TitleHeight}"
+            GlassFrameThickness="0"
+            CornerRadius="0"                
+            />
+    </WindowChrome.WindowChrome>
     <Grid>
-        <Menu x:Name="menu" VerticalAlignment="Top" FontSize="14.667">
-            <MenuItem Header="_File" x:Name="File" MenuItem.Click="MenuItem_Click">
-                <MenuItem Header="_New" x:Name="New"/>
-                <MenuItem Header="_Open..." x:Name="Open"/>
-                <MenuItem Header="_Save" x:Name="Save"/>
-                <MenuItem Header="_Save As..." x:Name="SaveAs"/>
-                <Separator/>
-                <MenuItem Header="_Print..." x:Name="Print"/>
-                <Separator/>
-                <MenuItem Header="_Close" x:Name="Close"/>
-            </MenuItem>
-            <MenuItem Header="_Edit" x:Name="Edit" MenuItem.Click="MenuItem_Click">
-                <MenuItem Header="_Undo" x:Name="Undo"/>
-                <MenuItem Header="_Redo" x:Name="Redo"/>
-                <Separator/>
-                <MenuItem Header="_Find" x:Name="Find"/>
-                <MenuItem Header="_Find Next" x:Name="FindNext" />
-                <MenuItem Header="_Replace..." x:Name="Replace"/>
-                <MenuItem Header="_Go To" x:Name="GoTo" />
-            </MenuItem>
-            
-            <MenuItem Header="_Tools" x:Name="Tools" MenuItem.Click="MenuItem_Click">
-                <MenuItem Header="_Encrypt Text" x:Name="EncryptText" />
-                <MenuItem Header="_Decrypt Text" x:Name="DecryptText" />
-            </MenuItem>
-            <MenuItem Header="_View" x:Name="View" MenuItem.Click="MenuItem_Click">
-                <MenuItem Header="_Status Bar" x:Name="StatusBar" />
-            </MenuItem>
-            <MenuItem Header="_Help" x:Name="Help" MenuItem.Click="MenuItem_Click">
-                <MenuItem Header="_About" x:Name="About" />
-            </MenuItem>
-        </Menu>
-
-        <TextBox x:Name="txtBox" Margin="0,20,0,0" FontSize="14.667" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Text="" />
-
+        <TextBox Text="{Binding DecryptedContent}" 
+                 FontSize="14" 
+                 FontFamily="{StaticResource LatoRegular}" 
+                 VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>
+ 
+
+ 

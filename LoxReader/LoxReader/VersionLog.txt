@@ -1,6 +1,0 @@
-﻿1.0.0.1 - 190616
-Aleksander Sand
-
-	* Added VersionLog.txt
-	* Set ShutDownMode to OnMainWindowClose
-
