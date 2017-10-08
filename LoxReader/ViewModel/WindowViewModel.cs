@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -179,7 +180,8 @@ namespace LoxReader
         {
             this.window = window;
             this.decryptedString = string.Empty;
-            this.FilePath = @"C:\Work\git\LoxReader\Logs\EPJService 2017-05-21.lox";
+            this.FilePath = Path.Combine(Directory.GetCurrentDirectory(), @"Logs\", "EPJService 2017-05-21.lox");
+            //this.FilePath = @"C:\Repository\LoxReader\Logs\EPJService 2017-05-21.lox";
 
             //Listen out for the window resizing
             this.window.StateChanged += (sender, e) =>
