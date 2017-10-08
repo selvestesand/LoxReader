@@ -136,7 +136,17 @@
             />
     </WindowChrome.WindowChrome>
     <Grid>
-        <TextBox Text="{Binding DecryptedContent}" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MaxWidth="300" MinWidth="150"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0">
+            <TreeViewItem>
+                
+            </TreeViewItem>
+        </TreeView>
+        
+        <TextBox Grid.Column="1" Text="{Binding DecryptedContent}" 
                  FontSize="14" 
                  FontFamily="{StaticResource LatoRegular}" 
                  VerticalScrollBarVisibility="Auto"/>

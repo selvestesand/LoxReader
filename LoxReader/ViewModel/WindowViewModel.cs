@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Input;
 
 namespace LoxReader
@@ -81,12 +82,17 @@ namespace LoxReader
         /// </summary>
         public Thickness InnerContentPaddingThickness { get { return new Thickness(InnerContentPadding); } }
 
+        public bool Borderless
+        {
+            get { return (window.WindowState == WindowState.Maximized); }            
+        }
+
         /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
         public int OuterMarginSize
         {
-            get { return this.window.WindowState == WindowState.Maximized ? 0 : this.outerMarginSize; }
+            get { return Borderless ? 0 : this.outerMarginSize; }
             set { this.outerMarginSize = value; }
         }
 
@@ -100,7 +106,7 @@ namespace LoxReader
         /// </summary>
         public int WindowRadius
         {
-            get { return this.window.WindowState == WindowState.Maximized ? 0 : this.windowRadius; }
+            get { return Borderless ? 0 : this.windowRadius; }
             set { this.windowRadius = value;  }
         }
 
