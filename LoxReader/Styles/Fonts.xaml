@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:LoxReader">
+                    xmlns:local="clr-namespace:LoxReader"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <FontFamily x:Key="LatoRegular">pack://application;,,,/Fonts/#Lato Regular</FontFamily>
     <FontFamily x:Key="LatoThin">pack://application;,,,/Fonts/#Lato Thin</FontFamily>
@@ -19,5 +20,10 @@
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}" />
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource BaseStyle}" />
+
+    <system:Double x:Key="FontSizeSmall">14</system:Double>
+    <system:Double x:Key="FontSizeRegular">20</system:Double>
+    <system:Double x:Key="FontSizeLarge">30</system:Double>
+    <system:Double x:Key="FontSizeHeader">40</system:Double>
     
 </ResourceDictionary>

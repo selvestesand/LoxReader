@@ -23,6 +23,12 @@ namespace LoxReader
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new WindowViewModel(this);
+
+            FolderView.Items.Add(new TreeViewItem());
+            FolderView.Items.Add(new TreeViewItem());
+            FolderView.Items.Add(new TreeViewItem());
+
         }
     }
 }

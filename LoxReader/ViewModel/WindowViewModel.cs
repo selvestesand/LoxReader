@@ -33,11 +33,6 @@ namespace LoxReader
         /// </summary>
         private string filePath;
 
-        /// <summary>
-        /// Holds the decrypted content for the current log file
-        /// </summary>
-        private string decryptedString;
-
         #endregion
 
         #region Public Properties
@@ -127,12 +122,14 @@ namespace LoxReader
 
         /// <summary>
         /// Returns the decrypted content of the encrypted file
-        /// </summary>
+        /// </summary>    
         public string DecryptedContent
         {
-            get { return Handler.DecryptFile(filePath) ; }
-            private set { decryptedString = value; }
+            get { return Handler.DecryptFile(this.filePath); }
+            set { DecryptedContent = value;  }
         }
+
+
 
         /// <summary>
         /// Sets the filepath, which should again trigger a new decrypted content
@@ -144,7 +141,10 @@ namespace LoxReader
             set
             {
                 if (value != filePath)
-                    filePath = value;
+                {
+                    filePath = value;                                       
+                }
+                    
             }
         }
 
@@ -184,8 +184,7 @@ namespace LoxReader
         /// <param name="window"></param>
         public WindowViewModel(Window window)
         {
-            this.window = window;
-            this.decryptedString = string.Empty;
+            this.window = window;                      
             this.FilePath = Path.Combine(Directory.GetCurrentDirectory(), @"Logs\", "EPJService 2017-05-21.lox");
             //this.FilePath = @"C:\Repository\LoxReader\Logs\EPJService 2017-05-21.lox";
 
