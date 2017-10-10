@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoxReader"
-        WindowStyle="None"
+        mc:Ignorable="d"
+            WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         x:Name="AppWindow"
-        Icon="Images/Decrypted.png"
-        mc:Ignorable="d"
+        Icon="Images/Decrypted.png"        
         MinWidth="{Binding WindowMinimumWidth, FallbackValue=400}"
         MinHeight="{Binding WindowMinimumHeight, FallbackValue=400}"         
         Height="{Binding WindowHeight}" 
@@ -37,7 +37,7 @@
                                         <DropShadowEffect ShadowDepth="6" Opacity="0.15"></DropShadowEffect>
                                     </Border.Effect>
                                 </Border>
-                                
+
                                 <!--  Main Window Content  -->
                                 <Grid>
 
@@ -59,7 +59,7 @@
 
                                     <!-- Title Bar -->
                                     <Grid Grid.Column="0" Panel.ZIndex="1" Background="{StaticResource MelinVeryLightBrush}">
-                                        
+
                                         <Grid.ColumnDefinitions>
                                             <!-- Icon -->
                                             <ColumnDefinition Width="Auto"/>
@@ -67,7 +67,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <!-- Windows Button -->
                                             <ColumnDefinition Width="Auto"/>
-                                        
+
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Icon -->
@@ -83,19 +83,19 @@
                                             </TextBlock>
                                         </Viewbox>
 
-                                        <!-- Window Buttons -->                                        
+                                        <!-- Window Buttons -->
                                         <StackPanel Grid.Column="2" Orientation="Horizontal">
                                             <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizeCommand}" Content="_"/>
                                             <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizeCommand}" Content="[ ]"/>
                                             <Button Style="{StaticResource WindowCloseButton}" Command="{Binding CloseCommand}" Content="X"/>
-                                            
+
                                         </StackPanel>
 
                                     </Grid>
 
-                                    <!-- Drop shadow -->                                    
+                                    <!-- Drop shadow -->
                                     <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
-                                        
+
                                         <!-- Underline of the header -->
                                         <Border.BorderBrush>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -120,7 +120,7 @@
                                     </Border>
 
                                 </Grid>
-                                
+
                             </Grid>
                         </Border>
                     </ControlTemplate>
@@ -128,7 +128,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <WindowChrome.WindowChrome>
         <WindowChrome
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
@@ -144,10 +144,10 @@
         </Grid.ColumnDefinitions>
         <TreeView Grid.Column="0">
             <TreeViewItem>
-                
+
             </TreeViewItem>
         </TreeView>
-        
+
         <TextBox Grid.Column="1" Text="{Binding DecryptedContent}" 
                  FontSize="14" 
                  FontFamily="{StaticResource LatoRegular}" 
