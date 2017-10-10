@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/decrypted.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/document.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("lib/common.dll")]
 
 

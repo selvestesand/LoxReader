@@ -78,7 +78,9 @@
 
                                         <!-- Title text -->
                                         <Viewbox Grid.Column="1" Margin="0">
-                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Loxreader'}"/>
+                                            <TextBlock Style="{StaticResource HeaderText}">
+                                                <Run FontFamily="{StaticResource LatoBold}" Foreground="{StaticResource MelinDarkGreyBrush}">Lox</Run><Run FontFamily="{StaticResource LatoBold}" Foreground="{StaticResource MelinDarkPurpleBrush}">Reader</Run>
+                                            </TextBlock>
                                         </Viewbox>
 
                                         <!-- Window Buttons -->                                        

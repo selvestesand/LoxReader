@@ -47,3 +47,4 @@ C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.Properties.Resources.resou
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.csproj.GenerateResource.Cache
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.exe
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.pdb
+C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader_Content.g.cs
