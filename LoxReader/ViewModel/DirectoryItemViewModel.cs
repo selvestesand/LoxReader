@@ -5,6 +5,7 @@ using System.Windows.Input;
 
 namespace LoxReader
 {
+
     public class DirectoryItemViewModel : BaseViewModel
     {
         #region Public Properties
@@ -36,7 +37,7 @@ namespace LoxReader
         {
             get
             {             
-                return Children?.Count(f => f != null) > 0;
+                return this.Children?.Count(f => f != null) > 0;
             }
 
             set
@@ -44,7 +45,7 @@ namespace LoxReader
                 // If the UI tells us to expand...
                 if (value == true)
                     // Find all children
-                    Expand();
+                    this.Expand();
                 // if the UI tells us to close
                 else
                     this.ClearChildren();
@@ -66,13 +67,14 @@ namespace LoxReader
         /// <param name="type">The type of this item</param>
         public DirectoryItemViewModel(string fullPath, DirectoryItemType type)
         {
+            // Create commands
+            this.ExpandCommand = new RelayCommand(Expand);            
+            
             // Set properties
             this.Type = type;
             this.FullPath = fullPath;
 
-            // Create commands
-            ExpandCommand = new RelayCommand(Expand);
-                        
+            // Setup children as needed
             this.ClearChildren();
         }
 
@@ -84,8 +86,6 @@ namespace LoxReader
 
             if (this.Type != DirectoryItemType.File)
                 this.Children.Add(null);
-            
-                
         }
 
         private void Expand()
@@ -95,9 +95,10 @@ namespace LoxReader
                 return;
 
             // Find all children
-            var children = DirectoryStructure.GetDirectoryContents(this.FullPath);
+            var dirs = DirectoryStructure.GetDirectoryContents(this.FullPath);
             this.Children = new ObservableCollection<DirectoryItemViewModel>(
-                children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
+                dirs.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
+
         }
 
         #endregion

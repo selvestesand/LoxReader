@@ -142,7 +142,12 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
+        <Frame Grid.Column="0" x:Name="DirectoryFrame" Content="{Binding LeftSidePage, Converter={local:ApplicationPageValueConverter}}"/>
+
+
+
+        <!--
         <TreeView Grid.Column="0" x:Name="FolderView" ItemsSource="{Binding DirectoryStructure.Items}">
             
             <TreeView.ItemContainerStyle>
@@ -164,7 +169,7 @@
             </TreeView.ItemTemplate>
             
         </TreeView>
-
+        -->
         <TextBox Grid.Column="1" Text="{Binding DecryptedContent}" 
                  FontSize="14" 
                  FontFamily="{StaticResource LatoRegular}" 

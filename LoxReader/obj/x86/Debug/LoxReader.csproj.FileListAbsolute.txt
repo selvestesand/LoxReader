@@ -50,3 +50,5 @@ C:\Repository\LoxReader\LoxReader\obj\x86\Debug\LoxReader.csproj.GenerateResourc
 C:\Repository\LoxReader\LoxReader\obj\x86\Debug\LoxReader.csproj.CoreCompileInputs.cache
 C:\Repository\LoxReader\LoxReader\obj\x86\Debug\LoxReader.exe
 C:\Repository\LoxReader\LoxReader\obj\x86\Debug\LoxReader.pdb
+C:\Repository\LoxReader\LoxReader\obj\x86\Debug\Pages\DirectoryStructurePage.g.cs
+C:\Repository\LoxReader\LoxReader\obj\x86\Debug\Pages\DirectoryStructurePage.baml

@@ -130,8 +130,6 @@ namespace LoxReader
             set { DecryptedContent = value;  }
         }
 
-        public DirectoryStructureViewModel DirectoryStructure { get; set; }
-
         /// <summary>
         /// Sets the filepath, which should again trigger a new decrypted content
         /// </summary>
@@ -149,6 +147,7 @@ namespace LoxReader
             }
         }
 
+        public ApplicationPage LeftSidePage { get; set; }
 
         #endregion
 
@@ -210,7 +209,7 @@ namespace LoxReader
             var resizer = new WindowResizer(this.window);
 
             // Creates sub view model
-            this.DirectoryStructure = new DirectoryStructureViewModel();
+            this.LeftSidePage = ApplicationPage.DirectoryPage;
         }
 
         #endregion
