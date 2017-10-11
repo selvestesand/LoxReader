@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -21,12 +22,14 @@ namespace LoxReader
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var path = (string)value;
+            string path = (string)value;
 
-            //if (path == null)
-                //return null;
+            string image = "Harddrive.png";            
 
-            return new BitmapImage(new Uri($"pack://application:,,,/Images/Harddrive.png"));
+            if (!path.Contains("\\"))
+                image = "Folder-Closed_2.png";
+
+            return new BitmapImage(new Uri($"pack://application:,,,/Images/{image}"));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
