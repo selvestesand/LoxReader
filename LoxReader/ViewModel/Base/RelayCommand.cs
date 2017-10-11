@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace LoxReader
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
 
         #region Public Events

@@ -76,12 +76,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Directory\Data\DirectoryItem.cs" />
-    <Compile Include="Directory\Data\DirectoryType.cs" />
+    <Compile Include="Directory\Data\DirectoryItemType.cs" />
     <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="Handler.cs" />
-    <Compile Include="ValueConverters\HeaderToBitmapConverter.cs" />
+    <Compile Include="ValueConverters\DirectoryTypeToBitmapConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\DirectoryItemViewModel.cs" />
+    <Compile Include="ViewModel\DirectoryStructureViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="MainWindow.xaml">

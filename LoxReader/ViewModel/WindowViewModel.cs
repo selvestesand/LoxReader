@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -8,7 +9,7 @@ using System.Windows.Input;
 
 namespace LoxReader
 {
-    class WindowViewModel : BaseViewModel
+    public class WindowViewModel : BaseViewModel
     {
 
         #region Private Members
@@ -129,7 +130,7 @@ namespace LoxReader
             set { DecryptedContent = value;  }
         }
 
-
+        public DirectoryStructureViewModel DirectoryStructure { get; set; }
 
         /// <summary>
         /// Sets the filepath, which should again trigger a new decrypted content
@@ -207,6 +208,9 @@ namespace LoxReader
 
             // Fix window resize issue
             var resizer = new WindowResizer(this.window);
+
+            // Creates sub view model
+            this.DirectoryStructure = new DirectoryStructureViewModel();
         }
 
         #endregion
