@@ -206,7 +206,7 @@ namespace LoxReader
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
 
             // Fix window resize issue
-            var resizer = new WindowResizer(this.window);
+            //var resizer = new WindowResizer(this.window);
 
             // Creates sub view model
             this.LeftSidePage = ApplicationPage.DirectoryPage;

@@ -17,7 +17,7 @@ namespace LoxReader
         public string Name => Type == DirectoryItemType.Drive ? FullPath : DirectoryStructure.GetFileFolderName(FullPath);
 
 
-        public ObservableCollection<DirectoryItemViewModel> Children;
+        public ObservableCollection<DirectoryItemViewModel> Children { get; set; }
 
         /// <summary>
         /// Can expand as long as its not a file
@@ -27,6 +27,11 @@ namespace LoxReader
             get
             {
                 return this.Type != DirectoryItemType.File;
+            }
+
+            set
+            {
+                CanExpand = value;
             }
         }
 
