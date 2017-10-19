@@ -1,0 +1,23 @@
+﻿<Page x:Class="LoxReader.DecryptedContentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoxReader"
+      mc:Ignorable="d" 
+      d:DesignHeight="{Binding PageHeight}" d:DesignWidth="{Binding PageWidth}"
+      Title="DecryptedContentPage">
+
+    <Grid>
+        <TextBox Grid.Column="1" Text="{Binding DecryptedContent}" 
+                 FontSize="14" 
+                 FontFamily="{StaticResource LatoRegular}" 
+                 VerticalScrollBarVisibility="Auto"/>
+        <TextBlock Grid.Column="1" Text="&#xf110;" 
+                   FontFamily="{StaticResource FontAwesome}" 
+                   FontSize="100" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Visibility="Collapsed"/>
+    </Grid>
+</Page>

@@ -3,6 +3,8 @@ namespace LoxReader
 {
     public enum ApplicationPage
     {
-        DirectoryPage
+        DirectoryPage,
+        LoginPage,
+        DecryptedContentPage        
     }
 }

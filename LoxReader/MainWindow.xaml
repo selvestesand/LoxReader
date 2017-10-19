@@ -143,37 +143,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Frame Grid.Column="0" x:Name="DirectoryFrame" Content="{Binding LeftSidePage, Converter={local:ApplicationPageValueConverter}}"/>
-
-
-
-        <!--
-        <TreeView Grid.Column="0" x:Name="FolderView" ItemsSource="{Binding DirectoryStructure.Items}">
-            
-            <TreeView.ItemContainerStyle>
-                <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
-                </Style>
-            </TreeView.ItemContainerStyle>
-
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Width="25" Margin="3" Source="{Binding Type, 
-                            Converter={x:Static local:DirectoryTypeToBitmapConverter.Instance}}" />
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}" 
-                                               FontFamily="{StaticResource LatoRegular}" 
-                                               FontSize="{StaticResource FontSizeSmall}"/>
-                    </StackPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-            
-        </TreeView>
-        -->
-        <TextBox Grid.Column="1" Text="{Binding DecryptedContent}" 
-                 FontSize="14" 
-                 FontFamily="{StaticResource LatoRegular}" 
-                 VerticalScrollBarVisibility="Auto"/>
+        <Frame Grid.Column="0" x:Name="LeftContentFrame" Content="{Binding LeftSidePage, Converter={local:ApplicationPageValueConverter}}"/>
+        <Frame Grid.Column="1" x:Name="MainContentFrame" Content="{Binding RightSidePage, Converter={local:ApplicationPageValueConverter}}"/>
+        
     </Grid>
 </Window>
  

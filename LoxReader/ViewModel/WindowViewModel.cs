@@ -29,11 +29,6 @@ namespace LoxReader
         /// </summary>
         private int windowRadius = 2;
 
-        /// <summary>
-        /// Holds the filepath for the current log file
-        /// </summary>
-        private string filePath;
-
         #endregion
 
         #region Public Properties
@@ -121,33 +116,9 @@ namespace LoxReader
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder);} }
 
-        /// <summary>
-        /// Returns the decrypted content of the encrypted file
-        /// </summary>    
-        public string DecryptedContent
-        {
-            get { return Handler.DecryptFile(this.filePath); }
-            set { DecryptedContent = value;  }
-        }
-
-        /// <summary>
-        /// Sets the filepath, which should again trigger a new decrypted content
-        /// </summary>
-        public string FilePath
-        {
-            get { return filePath; }
-
-            set
-            {
-                if (value != filePath)
-                {
-                    filePath = value;                                       
-                }
-                    
-            }
-        }
-
         public ApplicationPage LeftSidePage { get; set; }
+
+        public ApplicationPage RightSidePage { get; set; }
 
         #endregion
 
@@ -185,8 +156,6 @@ namespace LoxReader
         public WindowViewModel(Window window)
         {
             this.window = window;                      
-            this.FilePath = Path.Combine(Directory.GetCurrentDirectory(), @"Logs\", "EPJService 2017-05-21.lox");
-            //this.FilePath = @"C:\Repository\LoxReader\Logs\EPJService 2017-05-21.lox";
 
             //Listen out for the window resizing
             this.window.StateChanged += (sender, e) =>
@@ -206,10 +175,11 @@ namespace LoxReader
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
 
             // Fix window resize issue
-            //var resizer = new WindowResizer(this.window);
+            var resizer = new WindowResizer(this.window);
 
             // Creates sub view model
             this.LeftSidePage = ApplicationPage.DirectoryPage;
+            this.RightSidePage = ApplicationPage.DecryptedContentPage;
         }
 
         #endregion

@@ -13,6 +13,8 @@ namespace LoxReader
             {
                 case ApplicationPage.DirectoryPage:
                     return new DirectoryPage();
+                case ApplicationPage.DecryptedContentPage:
+                    return new DecryptedContentPage();
 
                 default:
                     Debugger.Break();

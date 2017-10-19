@@ -21,7 +21,7 @@
                  <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                     <StackPanel Orientation="Horizontal">
                         
-                        <Image Width="25" Margin="3" Source="{Binding Type, 
+                        <Image Width="20" Margin="3" Source="{Binding Type, 
                             Converter={x:Static local:DirectoryTypeToBitmapConverter.Instance}}" />
                         
                         <TextBlock VerticalAlignment="Center" Text="{Binding Name}" 
