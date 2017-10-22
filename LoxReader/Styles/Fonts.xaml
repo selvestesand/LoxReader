@@ -26,5 +26,14 @@
     <system:Double x:Key="FontSizeRegular">20</system:Double>
     <system:Double x:Key="FontSizeLarge">30</system:Double>
     <system:Double x:Key="FontSizeHeader">40</system:Double>
+
+    <system:String x:Key="FontAwesomeFolderIcon">&#xf07c;</system:String>
+    <system:String x:Key="FontAwesomeToolsIcon">&#xf013;</system:String>
+    <system:String x:Key="FontAwesomeEditIcon">&#xf044;</system:String>
+    <system:String x:Key="FontAwesomeGearIcon">&#xf013;</system:String>
+    <system:String x:Key="FontAwesomeSettingsIcon">&#xf1de;</system:String>
     
+    <system:String x:Key="FontAwesomeSpinnerIcon">&#xf110;</system:String>
+
+
 </ResourceDictionary>

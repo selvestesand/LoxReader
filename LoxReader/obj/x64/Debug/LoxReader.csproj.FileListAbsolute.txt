@@ -1,0 +1,7 @@
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\LoxReader.csprojResolveAssemblyReference.cache
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\MainWindow.g.cs
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\App.g.cs
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\LoxReader_Content.g.cs
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\LoxReader_MarkupCompile.cache
+C:\Repository\LoxReader\LoxReader\obj\x64\Debug\LoxReader_MarkupCompile.lref

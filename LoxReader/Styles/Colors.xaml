@@ -8,10 +8,7 @@
     <Color x:Key="MelinDarkGrey">#595a5c</Color>
     <SolidColorBrush x:Key="MelinDarkGreyBrush" Color="{StaticResource MelinDarkGrey}"/>
 
-    <!--  
-    <Color x:Key="MelinLightGrey">#6b6c6e</Color>
-    -->
-    <Color x:Key="MelinLightGrey">#fefefe</Color>
+    <Color x:Key="MelinLightGrey">#ecf1f4</Color>
     <SolidColorBrush x:Key="MelinLightGreyBrush" Color="{StaticResource MelinLightGrey}"/>
     
     <Color x:Key="MelinVeryLight">#ffffff</Color>
@@ -19,5 +16,7 @@
 
     <Color x:Key="MelinVeryDark">#000000</Color>
     <SolidColorBrush x:Key="MelinVeryDarkBrush" Color="{StaticResource MelinVeryDark}"/>
+
+    
 
 </ResourceDictionary>

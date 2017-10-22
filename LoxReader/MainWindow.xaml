@@ -5,16 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoxReader"
         mc:Ignorable="d"
-            WindowStyle="None"
+        WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         x:Name="AppWindow"
         Icon="Images/Decrypted.png"        
-        MinWidth="{Binding WindowMinimumWidth, FallbackValue=400}"
-        MinHeight="{Binding WindowMinimumHeight, FallbackValue=400}"         
-        Height="{Binding WindowHeight}" 
-        Width="{Binding WindowWidth}"
-        Title="Loxreader">
+        MinWidth="{Binding WindowMinWidth}"
+        MinHeight="{Binding WindowMinHeight}"         
+        Title="Loxreader" Height="800" Width="1280">
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
             <Setter Property="Template">
@@ -32,7 +30,7 @@
 
                                 <!-- Window border and dropshadow -->
                                 <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=2}" 
-                                        Background="{StaticResource MelinVeryLightBrush}">
+                                        Background="{StaticResource MelinLightGreyBrush}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="6" Opacity="0.15"></DropShadowEffect>
                                     </Border.Effect>
@@ -50,10 +48,10 @@
 
                                         <!-- Title Bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}"></RowDefinition>
-                                        <!-- Drop Shadow -->
-                                        <RowDefinition Height="Auto"/>
+
                                         <!-- Window Content -->
                                         <RowDefinition Height="*"/>
+                                        
 
                                     </Grid.RowDefinitions>
 
@@ -85,37 +83,16 @@
 
                                         <!-- Window Buttons -->
                                         <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizeCommand}" Content="_"/>
-                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizeCommand}" Content="[ ]"/>
-                                            <Button Style="{StaticResource WindowCloseButton}" Command="{Binding CloseCommand}" Content="X"/>
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MinimizeCommand}" Content="&#xf2d1;"/>
+                                            <Button Style="{StaticResource WindowControlButton}" Command="{Binding MaximizeCommand}" Content="&#xf2d0;"/>
+                                            <Button Style="{StaticResource WindowCloseButton}" Command="{Binding CloseCommand}" Content="&#xf2d3;"/>
 
                                         </StackPanel>
 
                                     </Grid>
 
-                                    <!-- Drop shadow -->
-                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0">
 
-                                        <!-- Underline of the header -->
-                                        <Border.BorderBrush>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="0.0"/>
-                                                <GradientStop Color="{StaticResource MelinDarkGrey}" Offset="0.5"/>
-                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Border.BorderBrush>
-
-                                        <!-- Drop shadow -->
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="{StaticResource MelinLightGrey}" Offset="0.0"/>
-                                                <GradientStop Color="{StaticResource MelinVeryLight}" Offset="1.0"/>
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-
-                                    </Border>
-
-                                    <Border Grid.Row="2" Padding="{Binding InnerContentPaddingThickness}">
+                                    <Border Grid.Row="1" Padding="{Binding InnerContentPaddingThickness}">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
 
@@ -134,17 +111,27 @@
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
             CaptionHeight="{Binding TitleHeight}"
             GlassFrameThickness="0"
-            CornerRadius="0"                
+            CornerRadius="0"            
             />
+        
     </WindowChrome.WindowChrome>
+    
     <Grid>
+        
+        <!-- Defines Main Columns, Left Menu and Main content on right -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Frame Grid.Column="0" x:Name="LeftContentFrame" Content="{Binding LeftSidePage, Converter={local:ApplicationPageValueConverter}}"/>
-        <Frame Grid.Column="1" x:Name="MainContentFrame" Content="{Binding RightSidePage, Converter={local:ApplicationPageValueConverter}}"/>
+        <!-- The Frame showing current page -->  
+        <Frame Grid.Column="1" x:Name="CurrentPageFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+        
+        <!-- Grid defining the left menu content -->
+
+        <local:SideMenuControl>
+            <Frame Content="{Binding DirectoryPage, Converter={local:ApplicationPageValueConverter}}"/>
+        </local:SideMenuControl>
         
     </Grid>
 </Window>

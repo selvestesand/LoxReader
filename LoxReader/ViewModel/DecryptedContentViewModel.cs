@@ -34,7 +34,6 @@ namespace LoxReader
         /// </summary>
         public double PageWidth { get; set; } = 1000;
 
-
         /// <summary>
         /// Returns the decrypted content of the encrypted file
         /// </summary>    
@@ -52,13 +51,14 @@ namespace LoxReader
                 if (value != filePath)
                 {
                     filePath = value;
-                    GetDecryptedContent();
+                    GetDecryptedContent();                    
                 }
                     
             }
         }
 
         #endregion
+
 
         #region Constructor
 

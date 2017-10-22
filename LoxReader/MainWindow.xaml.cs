@@ -24,7 +24,7 @@ namespace LoxReader
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new WindowViewModel(this);
+            this.DataContext = new WindowViewModel(this);            
         }        
 
     }

@@ -7,9 +7,8 @@ C:\Repository\LoxReader\LoxReader\bin\Debug\LoxReader.exe.config
 C:\Repository\LoxReader\LoxReader\bin\Debug\LoxReader.exe
 C:\Repository\LoxReader\LoxReader\bin\Debug\LoxReader.pdb
 C:\Repository\LoxReader\LoxReader\bin\Debug\Common.dll
-C:\Repository\LoxReader\LoxReader\bin\Debug\Microsoft.Windows.Shell.dll
-C:\Repository\LoxReader\LoxReader\bin\Debug\Microsoft.Windows.Shell.pdb
-C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.csprojResolveAssemblyReference.cache
+C:\Repository\LoxReader\LoxReader\obj\Debug\Pages\DecryptedContentPage.g.cs
+C:\Repository\LoxReader\LoxReader\obj\Debug\Pages\DirectoryPage.g.cs
 C:\Repository\LoxReader\LoxReader\obj\Debug\MainWindow.g.cs
 C:\Repository\LoxReader\LoxReader\obj\Debug\App.g.cs
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader_Content.g.cs
@@ -17,6 +16,8 @@ C:\Repository\LoxReader\LoxReader\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader_MarkupCompile.cache
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader_MarkupCompile.lref
 C:\Repository\LoxReader\LoxReader\obj\Debug\App.baml
+C:\Repository\LoxReader\LoxReader\obj\Debug\Pages\DecryptedContentPage.baml
+C:\Repository\LoxReader\LoxReader\obj\Debug\Pages\DirectoryPage.baml
 C:\Repository\LoxReader\LoxReader\obj\Debug\MainWindow.baml
 C:\Repository\LoxReader\LoxReader\obj\Debug\Styles\Buttons.baml
 C:\Repository\LoxReader\LoxReader\obj\Debug\Styles\Colors.baml
@@ -26,5 +27,9 @@ C:\Repository\LoxReader\LoxReader\obj\Debug\Styles\Windows.baml
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.g.resources
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.Properties.Resources.resources
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.csproj.GenerateResource.Cache
+C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.csproj.CoreCompileInputs.cache
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.exe
 C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.pdb
+C:\Repository\LoxReader\LoxReader\obj\Debug\LoxReader.csprojResolveAssemblyReference.cache
+C:\Repository\LoxReader\LoxReader\obj\Debug\Controls\SideMenuControl.g.cs
+C:\Repository\LoxReader\LoxReader\obj\Debug\Controls\SideMenuControl.baml

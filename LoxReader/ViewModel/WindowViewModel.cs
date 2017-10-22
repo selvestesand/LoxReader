@@ -46,12 +46,12 @@ namespace LoxReader
         /// <summary>
         /// The windows smallest height
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 400;
+        public double WindowMinHeight { get; set; } = 400;
 
         /// <summary>
         /// The windows smallest width
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinWidth { get; set; } = 400;        
 
         /// <summary>
         /// The thickness of the resize border
@@ -66,7 +66,7 @@ namespace LoxReader
         /// <summary>
         /// The inner padding of the content
         /// </summary>
-        public int InnerContentPadding { get; set; } = 6;
+        public int InnerContentPadding { get; set; } = 0;
 
         /// <summary>
         /// The padding of the inner content
@@ -115,10 +115,10 @@ namespace LoxReader
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder);} }
+    
+        public ApplicationPage CurrentPage { get; set; }
 
-        public ApplicationPage LeftSidePage { get; set; }
-
-        public ApplicationPage RightSidePage { get; set; }
+        public ApplicationPage DirectoryPage { get; set; } = ApplicationPage.DirectoryPage;
 
         #endregion
 
@@ -178,8 +178,7 @@ namespace LoxReader
             var resizer = new WindowResizer(this.window);
 
             // Creates sub view model
-            this.LeftSidePage = ApplicationPage.DirectoryPage;
-            this.RightSidePage = ApplicationPage.DecryptedContentPage;
+            this.CurrentPage = ApplicationPage.DecryptedContentPage;            
         }
 
         #endregion

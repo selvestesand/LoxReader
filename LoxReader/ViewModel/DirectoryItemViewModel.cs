@@ -65,6 +65,8 @@ namespace LoxReader
 
         #endregion
 
+        #region Default Constructor
+        
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -82,6 +84,8 @@ namespace LoxReader
             // Setup children as needed
             this.ClearChildren();
         }
+
+        #endregion
 
         #region Private Helper
 
