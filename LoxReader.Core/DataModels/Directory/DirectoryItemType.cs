@@ -1,5 +1,5 @@
 ﻿
-namespace LoxReader
+namespace LoxReader.Core
 {
     /// <summary>
     /// The type of a directory item

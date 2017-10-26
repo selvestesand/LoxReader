@@ -1,11 +1,10 @@
 ﻿
 using System;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Input;
+using LoxReader.Core;
 
 namespace LoxReader
 {
@@ -115,10 +114,6 @@ namespace LoxReader
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder);} }
-    
-        public ApplicationPage CurrentPage { get; set; }
-
-        public ApplicationPage DirectoryPage { get; set; } = ApplicationPage.DirectoryPage;
 
         #endregion
 
@@ -143,6 +138,8 @@ namespace LoxReader
         /// The command to show the system menu of the window
         /// </summary>
         public ICommand MenuCommand { get; set; }
+
+        public ICommand ToggleSideMenuCommand { get; set; }
 
 
         #endregion
@@ -173,13 +170,11 @@ namespace LoxReader
             MaximizeCommand = new RelayCommand(() => window.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => window.Close());
             MenuCommand = new RelayCommand(() => SystemCommands.ShowSystemMenu(window, GetMousePosition()));
+            ToggleSideMenuCommand = new RelayCommand(async () => await ToggleSideMenu());
 
             // Fix window resize issue
-            var resizer = new WindowResizer(this.window);
-
-            // Creates sub view model
-            this.CurrentPage = ApplicationPage.DecryptedContentPage;            
-        }
+            var resizer = new WindowResizer(this.window);          
+        }        
 
         #endregion
 
@@ -207,6 +202,13 @@ namespace LoxReader
             GetCursorPos(ref w32Mouse);
             return new Point(w32Mouse.X, w32Mouse.Y);
         }
+
+        public async Task ToggleSideMenu()
+        {
+            IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
+            return;
+        }
+
         #endregion
 
     }

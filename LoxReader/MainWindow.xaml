@@ -19,7 +19,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
                         <!-- Outer border with the dropshadow margin -->
-                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
                             <!-- Main window outline -->
                             <Grid>
 
@@ -93,7 +93,7 @@
 
 
                                     <Border Grid.Row="1" Padding="{Binding InnerContentPaddingThickness}">
-                                        <ContentPresenter Content="{TemplateBinding Content}" />
+                                        <ContentPresenter Content="{TemplateBinding Content}" ClipToBounds="True" />
                                     </Border>
 
                                 </Grid>
@@ -120,19 +120,35 @@
         
         <!-- Defines Main Columns, Left Menu and Main content on right -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>    
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- The Frame showing current page -->  
-        <Frame Grid.Column="1" x:Name="CurrentPageFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
-        
-        <!-- Grid defining the left menu content -->
+        <!-- Side Menu -->
+        <local:SideMenuControl 
+            local:AnimateSlideInFromLeftProperty.Value="{Binding SideMenuVisible, 
+            Source={x:Static local:ViewModelLocator.Instance}}">
 
-        <local:SideMenuControl>
-            <Frame Content="{Binding DirectoryPage, Converter={local:ApplicationPageValueConverter}}"/>
+            <Frame Content="{Binding SideMenuContent, 
+                   Source={x:Static local:ViewModelLocator.Instance},
+                    Converter={local:IoCPageConverter}}"/>
         </local:SideMenuControl>
         
+        <Button Grid.Column="1"
+                Width="20"
+                Command="{Binding ToggleSideMenuCommand}"
+                Style="{StaticResource ToggleSideMenuButton}"
+                Content="{StaticResource FontAwesomeBackwardIcon}"/>
+        
+        <!-- The Frame showing current page -->
+        <Frame Grid.Column="2" x:Name="CurrentPageFrame" 
+               
+               Content="{Binding CurrentPage, 
+                Source={x:Static local:ViewModelLocator.Instance},
+                Converter={local:IoCPageConverter}}"/>
+
+
     </Grid>
 </Window>
  

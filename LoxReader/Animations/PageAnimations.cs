@@ -28,7 +28,7 @@ namespace LoxReader
         {
             var sb = new Storyboard();
 
-            sb.AddSlideOutBottom(seconds, page.WindowHeight);
+            sb.AddSlideToBottom(seconds, page.WindowHeight);
             sb.AddFadeOut(seconds);
 
             sb.Begin(page);

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using PropertyChanged;
 
-namespace LoxReader
+namespace LoxReader.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged

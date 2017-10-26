@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Input;
 
-namespace LoxReader
+namespace LoxReader.Core
 {
     public class RelayCommand : ICommand
     {

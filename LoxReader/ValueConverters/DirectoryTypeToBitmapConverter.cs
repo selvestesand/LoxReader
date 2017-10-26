@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using LoxReader.Core;
 
 namespace LoxReader
 {

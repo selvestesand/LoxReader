@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using LoxReader.Core;
 
 namespace LoxReader
 {
@@ -17,7 +18,7 @@ namespace LoxReader
 
         #region Public Properties
 
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.FadeIn;
+        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideDownAndFadeInFromTop;
 
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.FadeOut;
 

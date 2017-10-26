@@ -9,7 +9,7 @@
     <UserControl.Template>
         <ControlTemplate TargetType="{x:Type UserControl}">
 
-            <Grid>
+            <Grid Width="300">
 
                 <!-- Splits left menu into top menu and content below -->
                 <Grid.RowDefinitions>

@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using MM.MPT.Common;
 
-namespace LoxReader
+namespace LoxReader.Core
 {
     public static class Handler
     {

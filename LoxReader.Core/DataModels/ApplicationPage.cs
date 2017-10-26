@@ -1,5 +1,5 @@
 ﻿
-namespace LoxReader
+namespace LoxReader.Core
 {
     public enum ApplicationPage
     {

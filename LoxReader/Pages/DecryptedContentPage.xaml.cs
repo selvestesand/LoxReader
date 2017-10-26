@@ -1,4 +1,6 @@
-﻿namespace LoxReader
+﻿using LoxReader.Core;
+
+namespace LoxReader
 {
     /// <summary>
     /// Interaction logic for DecryptedContentPage.xaml

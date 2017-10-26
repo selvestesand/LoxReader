@@ -1,4 +1,4 @@
-﻿namespace LoxReader
+﻿namespace LoxReader.Core
 {
     internal interface AddINotifyPropertyChanged
     {

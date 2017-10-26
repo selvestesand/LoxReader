@@ -1,0 +1,9 @@
+C:\Repository\LoxReader\LoxReader.Core\bin\Debug\LoxReader.Core.dll
+C:\Repository\LoxReader\LoxReader.Core\bin\Debug\Common.dll
+C:\Repository\LoxReader\LoxReader.Core\bin\Debug\Ninject.dll
+C:\Repository\LoxReader\LoxReader.Core\bin\Debug\Ninject.xml
+C:\Repository\LoxReader\LoxReader.Core\obj\Debug\LoxReader.Core.csproj.CoreCompileInputs.cache
+C:\Repository\LoxReader\LoxReader.Core\obj\Debug\LoxReader.Core.dll
+C:\Repository\LoxReader\LoxReader.Core\obj\Debug\LoxReader.Core.pdb
+C:\Repository\LoxReader\LoxReader.Core\bin\Debug\LoxReader.Core.pdb
+C:\Repository\LoxReader\LoxReader.Core\obj\Debug\LoxReader.Core.csprojResolveAssemblyReference.cache

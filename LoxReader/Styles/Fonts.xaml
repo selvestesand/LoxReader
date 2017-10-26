@@ -35,5 +35,9 @@
     
     <system:String x:Key="FontAwesomeSpinnerIcon">&#xf110;</system:String>
 
+    <system:String x:Key="FontAwesomeBackwardIcon">&#xf104;</system:String>
+    <system:String x:Key="FontAwesomeForwardIcon">&#xf105;</system:String>
+    
+
 
 </ResourceDictionary>

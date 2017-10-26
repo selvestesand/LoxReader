@@ -5,10 +5,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Input;
 
-namespace LoxReader
+namespace LoxReader.Core
 {
     public class DecryptedContentViewModel : BaseViewModel
     {

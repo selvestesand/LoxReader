@@ -52,10 +52,6 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common, Version=1.17.1.6, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Lib\Common.dll</HintPath>
-    </Reference>
     <Reference Include="PropertyChanged, Version=2.1.4.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.2.1.4\lib\netstandard1.0\PropertyChanged.dll</HintPath>
       <Private>False</Private>
@@ -75,12 +71,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Animations\PageAnimation.cs" />
+    <Compile Include="Animations\FrameworkElementAnimations.cs" />
     <Compile Include="Animations\PageAnimations.cs" />
     <Compile Include="Animations\StoryboardHelpers.cs" />
+    <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\Base\BasePage.cs" />
     <Compile Include="Pages\DecryptedContentPage.xaml.cs">
       <DependentUpon>DecryptedContentPage.xaml</DependentUpon>
@@ -88,19 +86,11 @@
     <Compile Include="Pages\DirectoryPage.xaml.cs">
       <DependentUpon>DirectoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataModels\Directory\DirectoryItem.cs" />
-    <Compile Include="DataModels\Directory\DirectoryItemType.cs" />
-    <Compile Include="DataModels\Directory\DirectoryStructure.cs" />
-    <Compile Include="Handler.cs" />
+    <Compile Include="ValueConverters\IoCPageConverter.cs" />
     <Compile Include="ValueConverters\Base\BaseValueConverter.cs" />
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\DirectoryTypeToBitmapConverter.cs" />
-    <Compile Include="ViewModel\AddINotifyPropertyChanged.cs" />
-    <Compile Include="ViewModel\Base\BaseViewModel.cs" />
-    <Compile Include="ViewModel\Base\RelayCommand.cs" />
-    <Compile Include="ViewModel\DirectoryItemViewModel.cs" />
-    <Compile Include="ViewModel\DirectoryStructureViewModel.cs" />
-    <Compile Include="ViewModel\DecryptedContentViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
     <Page Include="Controls\SideMenuControl.xaml">
@@ -140,10 +130,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Texts.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Windows.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -208,7 +194,12 @@
     <Resource Include="Images\Folder-Open.png" />
     <Resource Include="Images\Harddrive.png" />
     <Resource Include="Images\if_folder-open_173017.png" />
-    <Content Include="Lib\Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LoxReader.Core\LoxReader.Core.csproj">
+      <Project>{3cb717cc-2b29-4a0d-be6b-2b1da36677cd}</Project>
+      <Name>LoxReader.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
